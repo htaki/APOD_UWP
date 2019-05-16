@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="APOD_UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:APOD_UWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+
+    <Grid LostFocus="Grid_LostFocus">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="20" Orientation="Vertical">
+            <CalendarDatePicker
+                x:Name="MonthCalendar"
+                Margin="10"
+                DateChanged="MonthCalendar_DateChanged"
+                PlaceholderText="select a date" />
+            <Button
+                x:Name="LaunchButton"
+                Margin="10"
+                Click="LaunchButton_Click"
+                Content="Go to APOD launch date" />
+            <Border
+                Margin="10"
+                BorderBrush="DimGray"
+                BorderThickness="1">
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <CheckBox
+                        x:Name="ShowTodaysImageCheckBox"
+                        Grid.ColumnSpan="2"
+                        Content="Show today's image on start up" />
+                    <CheckBox
+                        x:Name="LimitRangeCheckBox"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Checked="LimitRangeCheckBox_Checked"
+                        Content="Limit range to current year"
+                        Unchecked="LimitRangeCheckBox_Unchecked" />
+                    <TextBlock
+                        Grid.Row="2"
+                        VerticalAlignment="Center"
+                        Text="Images downloaded today:" />
+                    <TextBox
+                        x:Name="ImagesTodayTextBox"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Height="20"
+                        VerticalAlignment="Center"
+                        Background="#FFFFFFC0"
+                        IsReadOnly="True" />
+                </Grid>
+            </Border>
+            <TextBlock Margin="10" Text="Image Credit and Copyright:" />
+            <TextBox
+                x:Name="ImageCopyrightTextBox"
+                Margin="10"
+                Background="#FFFFFFC0"
+                IsReadOnly="True" />
+        </StackPanel>
+        <TextBlock
+            Grid.Row="2"
+            Margin="10"
+            Text="Description:" />
+        <TextBox
+            x:Name="DescriptionTextBox"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            MinHeight="100"
+            Margin="10,40"
+            Background="#FFFFFFC0"
+            IsReadOnly="True"
+            TextWrapping="Wrap" />
+        <Border
+            Grid.Column="2"
+            Margin="10"
+            BorderBrush="DimGray"
+            BorderThickness="1">
+            <Image x:Name="ImagePictureBox" />
+        </Border>
+
+    </Grid>
+</Page>
